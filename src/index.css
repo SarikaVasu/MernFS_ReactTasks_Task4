@@ -5,9 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background-color: black;
+  padding: 0 2rem 2rem 2rem;
+}
+header {
+  width: 100%;
+  text-align: center;
+}
+table {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+th {
+  border-bottom: 1px solid white;
+}
+.Profile {
+  width: 7%;
+}
+.ProfilePic {
+  width: 70%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+

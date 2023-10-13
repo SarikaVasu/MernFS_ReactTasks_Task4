@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect,useState } from 'react';
+import Header from './components/Header';
+import Table from './components/Table';
 
 function App() {
+
+  const API_URL ="https://dummyjson.com/users";
+  const [data,setData] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error(`This is an HTTP error: The status is ${response.status}`);
+        }
+        const items = await response.json();
+        setData(items.users);
+        console.log(items.users);
+      } catch(err) {
+        alert(err.message);
+      }
+    } 
+    setTimeout(() => {
+      (async() => await fetchItems())();
+    },1000)
+  },[]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <article className='Page'>
+        <Header />
+        <Table 
+        data = {data}/>
+      </article>
     </div>
   );
 }
